@@ -16,10 +16,6 @@
 
 
 
-
- 
-
-
 // jobs.forEach(job =>{
 //    const modalidad= job.getAttribute("data-modalidad");
 //    const isShown= selectedValue === "" || selectedValue === modalidad;
