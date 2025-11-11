@@ -6,22 +6,29 @@ import { Pagination } from "./components/Pagination.jsx"
 import data from "./data.json"
 import { SearchFormSection } from "./components/SearchFormSection.jsx"
 import { JobListings } from "./components/JobListings.jsx"
+import { useState } from "react"
 
 console.log(data)
 
 function App() {
+  const [currentPage, setCurrentPage] = useState(1)
+  const totalPages= 5
+  const handlePageChange=(page)=>{
+    console.log("cambiando la pagina a ", page)
+    setCurrentPage(page)
+
+  }
 
   return (
     <>
   <Header/>
-  <JobCard/>
     
     <main>
       <SearchFormSection/>
 
       <section>
         <JobListings/>
-        <Pagination/>
+        <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
       </section>
     </main>
 

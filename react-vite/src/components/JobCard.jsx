@@ -1,23 +1,21 @@
 
 
 
-export const JobCard = ({ titulo, empresa, ubicacion, descripcion, data }) => {
-   
+export const JobCard = ({ job }) => {
+   console.log(job)
 
   return (
-    <article className="job-card">
-      <header className="job-card-header">
-        <h3 className="job-title">{titulo}</h3>
-        <p className="job-company">{empresa}</p>
-      </header>
-      <div className="job-card-body">
-        <p className="job-location">{ubicacion}</p>
-        <p className="job-description">{descripcion}</p>
+    <article className="job-listing-card" 
+    data-modalidad={job.data.modalidad} 
+    data-nivel={job.data.nivel} 
+    data-technology={job.data.technology}
+    >
+      <div>
+        <h3>{job.titulo}</h3>
+        <small>{job.empresa} - {job.ubicacion}</small>
+        <p>{job.descripcion}</p>
       </div>
-      <footer className="job-card-footer">
-        <span className="job-tags">{data}</span>
-        <button className="btn-apply">Aplicar</button>
-      </footer>
+      <button className="button-apply-job">Aplicar</button>
     </article>
   )
 }
