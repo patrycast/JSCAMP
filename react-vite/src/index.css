@@ -1,0 +1,530 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/* “custom properties” */
+:root {
+  --primary: #1173d4;
+  --primary-dark: #0a3d66;
+  --primary-hover: #0d5ba8;
+  --primary-light: #3c91df;
+  --background: #101922;
+  --text-primary: #ffffff;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --border: rgba(255, 255, 255, 0.1);
+  --card-bg: #1e293b;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --input-bg: #1e293b;
+  --hsla-example: hsla(210, 100%, 56%, 1);
+}
+
+/* @font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-display: swap; 
+  font-weight: 100 900;
+  /* Acá podrías agregar src: url(...) si tenés el archivo de fuente */
+/* } */
+
+body{
+    font-family: system-ui;
+    background-color: var(--background);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display:flex;
+    flex-direction: column;
+    line-height: 1.6;
+}
+h1{
+    font-size: 1.5rem;
+    line-height: 1.2;
+    text-wrap: balance;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    svg{
+        width:2rem;
+        height: 2rem;
+        color: var(--primary-light);
+    }
+}
+
+/* & > img{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    left:0;
+    right: 0;
+    mask-image:linear-gradient(to bottom, rgba(16, 25, 34, 1) 5%, rgba(16, 25, 34, 0) 80%);
+} */
+h1 + p{
+    text-wrap: balance;
+    margin-bottom: 2rem;
+}
+
+
+
+header{
+    border-bottom: 1px solid var(--border);
+    background-color: var(--background);
+    padding: .5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h2{
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+}
+
+
+
+nav{
+    align-items: center;
+    gap: 1rem;
+    display: flex;
+
+    a{
+        text-decoration: none;
+        color: var(--text-secondary);
+        transition: color 0.2s;
+        font-weight: 500;
+
+        &:hover, &:focus{
+            color: var(--primary);
+            outline: none;
+        }
+    }
+}    
+
+/* Botones del Header */
+header div a {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #334155;
+  color: var(--text-primary);
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Hero */
+
+
+/* section */
+main > section:nth-child(1) {
+  height: 500px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    padding-top: 36px;
+  }
+
+  & > img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    mask-image: linear-gradient(to bottom, rgba(16, 25, 34, 1) 5%, rgba(16, 25, 34, 0) 80%);
+  }
+}
+
+
+
+form{ 
+    max-width: 42rem;
+    width: 100%;
+    margin: 0 auto;
+    padding-inline: 1rem;
+}
+form > div{
+    display: flex;
+    align-items: center;
+    background-color: var(--input-bg);
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px var(--shadow);
+}
+form span {
+    padding-left: 0.75rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+form input[type="text"]{
+    flex:1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-primary);
+    padding: 0.75rem 0.5rem;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+form input[type="text"]::placeholder{
+    color: #64748b;
+}
+
+button{
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--primary);
+    color: white;
+    font-weight: 400;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+    font-size: 1rem;
+    white-space: nowrap;
+
+    &:hover,
+    &:focus{
+        background-color: var(--primary-hover);
+        outline: 2px solid white;
+        outline-offset: 2px;
+    }
+    &:active{
+        transform: scale(0.90);
+    }
+    &:disabled {
+    opacity: .5;
+    pointer-events: none;
+  }
+}
+
+main > section:nth-child(2){
+    padding-inline:  1rem;
+    background-color: var(--background);
+    padding-top: 2rem;
+
+    & > header{
+        gap: 2px;
+        flex-direction: column;
+
+        h2{
+            margin-bottom: 0;
+        }
+        p{
+            opacity: .75;
+        }
+    }
+    & > div {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+}
+
+main > section:nth-child(2) h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+main > section:nth-child(2) > div > div:first-child > p {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+main > section:nth-child(2) footer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px
+}
+
+
+footer{
+    background-color: var(--background);
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding:16px;
+
+
+    small{
+        color: var(--text-muted);
+        font-size: 0.875rem;
+    }
+
+}
+
+
+article{
+    background-color: var(--card-bg);
+    padding: 2rem;
+    margin-bottom: 16px;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0,0, 0.5);
+
+    svg{
+        color: var(--primary-light);
+        background: rgba(0, 153, 255, .3);
+        width: 64px;
+        height:64px;
+        border-radius: 100%;
+        padding: 16px;
+    }
+
+    p{
+        color:var(--text-muted);
+    }
+
+    h3{
+        font-weight: 500;
+    }
+}    
+    
+
+
+
+/* @media (width >=640px){
+    main > section:nth-child(2) footer{
+    grid-template-columns: 1fr 1fr 1fr;
+    }
+} */
+
+
+/* ----------------------------------Empleo-------------------------------------- */
+.button-apply-job{
+    &.is-applied{
+        background-color: #4caf50;
+        pointer-events: none;
+
+    }
+}
+
+
+
+.jobs-search {
+  margin: 0;
+  padding: 0;
+  height: auto !important;
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: .25rem;
+  }
+
+  p {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .search-bar {
+    background: var(--input-bg);
+    padding: .25rem .5rem;
+  }
+
+  .search-filters {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: .5rem;
+  }
+
+  form {
+    width: 100%;
+    max-width: 1280px; 
+  }
+
+  form div {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+  }
+}
+select{
+  padding: 0.625rem 1.25rem;
+  background-color: #242d3a;
+  border: 0;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  color: #ddd;
+  cursor: pointer;
+  transition: all 0.2s;
+  appearance: none; /**appearance: none;: Esta propiedad es muy útil para eliminar el estilo por defecto del elemento select, así podemos estilizarlo como queramos./
+  /* background-image: url( 'data:xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6"');
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center; */
+  padding-right: 2.5rem;
+  margin-right: 5px;
+
+  &:hover{
+    background-color: var(--primary-hover);
+    color: white;
+  }
+  &:focus{
+    outline: 2px solid #1173d4;
+    outline-offset: 2px;
+  }
+}
+
+
+.jobs-listings{
+    border: 1px solid rgba(255, 255, 255, .3);
+    border-radius: 1rem; 
+
+
+.job-listing-card{
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
+    margin: 0;
+
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+
+    &.is-hidden{
+        display: none;
+    }
+
+    small{
+        font-size: .875rem;
+        opacity: .75;
+    }
+    p{
+        margin-top: 0.5rem;
+    }
+    &:last-child{
+        border-bottom: none;
+    }
+}
+}
+
+.pagination{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-block: 2rem;
+
+    a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width:2.5rem;
+        height:2.5rem;
+        color:var(--text-muted);
+        border-radius: 0.375rem;
+        transition: all 0.3s;
+   
+
+    &:hover, &:focus{
+        background-color: #fff;
+    }
+    &:active{
+        transform: scale(0.90);
+    }
+    &.isActive{
+        background-color: var(--primary-light);
+        color:white;
+        pointer-events: none;
+        }
+    }
+} 
+
+
+
+/* -----------------------detalle de empleo-------------------------------- */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #c9d1d9;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color: #58a6ff;
+}
+
+.upload-btn {
+  background-color: #238636;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.upload-btn:hover {
+  background-color: #2ea043;
+}
+
+/* Main */
+.main {
+  margin-top: 40px;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.company {
+  color: #8b949e;
+}
+
+.job-section {
+  background-color: #161b22;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  border: 1px solid #30363d;
+}
+
+.job-section h3 {
+  color: #58a6ff;
+  margin-bottom: 10px;
+}
+
+.job-section ul {
+  list-style-type: "✔ ";
+  padding-left: 20px;
+}
+
+.apply-btn {
+  background-color: #1f6feb;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.apply-btn:hover {
+  background-color: #388bfd;
+}
+
+.apply-footer {
+  text-align: center;
+  margin: 40px 0;
+}
