@@ -2,7 +2,6 @@
 
 
 export const JobCard = ({ job }) => {
-   console.log(job)
 
   return (
     <article className="job-listing-card" 

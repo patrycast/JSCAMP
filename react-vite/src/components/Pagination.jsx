@@ -41,7 +41,7 @@ export const Pagination = ({ currentPage=1, totalPages=10, onPageChange }) => {
 
 
       {pages.map(page => (
-        <a href="#" data-page={page} className={currentPage=== page ? "isActive" : ""}
+        <a href="#" key={page} data-page={page} className={currentPage=== page ? "isActive" : ""}
           onClick={handleChangePage }> {page}
         </a>
       ))}
