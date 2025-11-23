@@ -1,7 +1,7 @@
 import { Pagination } from "../components/Pagination.jsx"
 import { SearchFormSection } from "../components/SearchFormSection.jsx"
 import { JobListings } from "../components/JobListings.jsx"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import jobsData from "../data.json"
 
@@ -47,6 +47,10 @@ export function SearchPage() {
     setTextToFilter(newTextToFilter)
     setCurrentPage(1)
   }
+
+  useEffect(() =>{
+    document.title= `Resultados: ${jobsWithTextFilter.length} - pagina ${currentPage} DevJob`
+  },[jobsWithTextFilter, currentPage])
 
   return (
     <main>
