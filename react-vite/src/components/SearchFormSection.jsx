@@ -1,12 +1,8 @@
-import { useId } from "react";
+import { useId, useState } from "react";
 
-export const SearchFormSection = ({onTextFilter, onSearch}) => {
-    const idText= useId();
-    const idTechnology= useId();
-    const idLocation= useId();
-    const idExperienceLevel= useId();
-
-    const handleSubmit = (e) => {
+const useSearchForm= ({idTechnology, idLocation, idExperienceLevel, onSearch, onTextFilter}) => {
+        const [searchText, setSearchText] = useState("")
+        const handleSubmit = (e) => {
         console.log("submit")
         e.preventDefault();
         // event target(elemento que esta recibiendo el evento(input)) !== event.currentTarget(evento que esta escuchando el evento(el formulario))
@@ -23,10 +19,26 @@ export const SearchFormSection = ({onTextFilter, onSearch}) => {
 
     const handleTextChange= (e) =>{
         const text= e.target.value
+        setSearchText(text)
         onTextFilter(text)
+    }
+
+    return{
+        searchText, handleSubmit, handleTextChange
+    }
 
     }
 
+
+export const SearchFormSection = ({onTextFilter, onSearch}) => {
+    const idText= useId();
+    const idTechnology= useId();
+    const idLocation= useId();
+    const idExperienceLevel= useId();
+    const { handleSubmit, handleTextChange} = useSearchForm({idTechnology, idLocation, idExperienceLevel, onSearch, onTextFilter})
+
+    
+    
   return (
       <section className="jobs-search">
             <h1>Encuentra tu próximo trabajo</h1>
