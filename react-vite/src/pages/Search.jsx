@@ -24,7 +24,22 @@ const useFilters= () => {
     async function fetchJobs() {
       try {
         setLoading(true)
-        const response= await fetch("https://jscamp-api.vercel.app/api/jobs")
+
+        const params=new URLSearchParams()
+        if (textToFilter) params.append("text", textToFilter)
+        if(filters.Technology) params.append("technology", filters.Technology)
+        if(filters.Location) params.append("type", filters.Location)
+        if(filters.ExperienceLevel) params.append("level", filters.ExperienceLevel)
+
+          const offset= (currentPage -1) * RESULT_PER_PAGE
+          params.append("limit", RESULT_PER_PAGE)
+          params.append("offset", offset)
+
+        const queryParams= params.toString()
+
+
+
+        const response= await fetch(`https://jscamp-api.vercel.app/api/jobs?${queryParams}`)
         const json= await response.json()
 
         setJobs(json.data)
@@ -37,13 +52,12 @@ const useFilters= () => {
       }
     }
     fetchJobs()
-  }, [])
+  }, [filters, textToFilter, currentPage])
 
-   const totalPages= Math.ceil(jobs.length / RESULT_PER_PAGE)
+   const totalPages= Math.ceil(total / RESULT_PER_PAGE)
 
   
   const handlePageChange=(page)=>{
-    console.log("cambiando la pagina a ", page)
     setCurrentPage(page)
   }
 
@@ -84,16 +98,19 @@ export function SearchPage() {
     handleTextFilter
   } = useFilters()
  
+const title = loading ? "cargando.. - DevJob" : `Resultados: ${total}, pagina ${currentPage} - DevJob` 
 
-  useEffect(() =>{
-    document.title= `Resultados: ${total} - pagina ${currentPage} DevJob`
-  },[total, currentPage])
+
 
   return (
     <main>
+    <title>{title}</title>
+    <meta name="description" content="Explora miles de oportunidades laborales en el sector tecnológico.
+    Encuentra tu próximo empleo en DevJobs"/>
       <SearchFormSection onSearch={handleSearch} onTextFilter={handleTextFilter} />
 
       <section>
+         <h2 style={{textAlign:"center"}}>Resultado de Busqueda</h2>
         {
           loading ? <p>Cargando Empleos...</p> : <JobListings jobs={jobs}/>
         }

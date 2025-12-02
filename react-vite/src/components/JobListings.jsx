@@ -4,8 +4,10 @@ import { JobCard } from "./JobCard.jsx"
 export const JobListings = ({jobs}) => {
   return (
     <>
-        <h2 style={{textAlign:"center"}}>Resultado de Busqueda</h2>
         <div className="jobs-listings">
+          {
+            jobs.length === 0 && <p style={{textAlign:"center", padding: "1rem", textWrap:"balance"}}>No se encontraron empleos que coincidan con tus criterios de búsqueda.</p>
+          }
         {jobs.map(job=>(
            <JobCard key={job.id} job={job} />
         ))}
